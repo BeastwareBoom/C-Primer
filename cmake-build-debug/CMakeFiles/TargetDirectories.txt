@@ -1,3 +1,0 @@
-D:/Workspace/CPP/Projects/CppPrimer/cmake-build-debug/CMakeFiles/CppPrimer.dir
-D:/Workspace/CPP/Projects/CppPrimer/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Workspace/CPP/Projects/CppPrimer/cmake-build-debug/CMakeFiles/rebuild_cache.dir
