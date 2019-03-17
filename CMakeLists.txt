@@ -3,7 +3,7 @@ project(CppPrimer)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SRC_CHAPTER01 chapter01/main.cpp)
+set(SRC_CH01 ch01/main.cpp)
 
 #WIN32
-add_executable(${PROJECT_NAME} ${SRC_CHAPTER01})
+add_executable(${PROJECT_NAME} ${SRC_CH01})

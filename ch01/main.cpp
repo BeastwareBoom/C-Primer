@@ -1,7 +1,19 @@
 #include <iostream>
 
 //using namespace std;
+
+//indeterminate input
 int main() {
+    int sum=0,value=0;
+    while (std::cin>>value){
+        sum+=value;
+    }
+
+    //Ctrl+D for output
+    std::cout<<"sum="<<sum<<std::endl;
+}
+
+int main_stream() {
 
     int v1=0,v2=0;
     //string literal
