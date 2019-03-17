@@ -3,7 +3,7 @@
 //using namespace std;
 
 //indeterminate input
-int main() {
+int main_in() {
     int sum=0,value=0;
     while (std::cin>>value){
         sum+=value;
