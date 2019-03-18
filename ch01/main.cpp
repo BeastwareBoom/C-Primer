@@ -2,6 +2,17 @@
 
 //using namespace std;
 
+
+int main(){
+
+    unsigned char c1=256;
+    signed char c2=-129;
+    std::cout<<"c1="<<c1<<std::endl;
+    std::cout<<"c2="<<c2<<std::endl;
+
+    return EXIT_SUCCESS;
+}
+
 //indeterminate input
 int main_in() {
     int sum=0,value=0;

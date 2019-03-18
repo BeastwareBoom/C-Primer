@@ -1,7 +1,7 @@
 #include <iostream>
 #include "../include/Sales_item.h"
 
-int main() {
+int main_in_si() {
   Sales_item item;
   //输入，如：0-201-12345-X 3 20.00
   while (std::cin >> item)
