@@ -87,7 +87,21 @@ target_link_libraries(${PROJECT_NAME} ${EXTRA_LIBS})
 # 代替上方 include_directories()
 target_include_directories(${PROJECT_NAME} PUBLIC "${PROJECT_BINARY_DIR}" ${EXTRA_INCLUDES})
 
-# add the install targets
+# add the install targets. Run | Install or make install on linux
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
-install(FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h"
-        DESTINATION include)
+install(FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h" DESTINATION include)
+
+# add test Configurations | ContinuousTest for test
+include(CTest)
+#enable_testing()
+
+#define a macro to simplify adding tests, then use it
+macro (do_test arg result)
+    add_test (TutorialComp${arg} ${PROJECT_NAME} ${arg})
+    set_tests_properties (TutorialComp${arg}
+            PROPERTIES PASS_REGULAR_EXPRESSION ${result})
+endmacro (do_test)
+
+# do a bunch of result based tests
+do_test (25 "25 is 5")
+do_test (-25 "-25 is 0")
