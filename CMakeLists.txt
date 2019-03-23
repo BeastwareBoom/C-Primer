@@ -3,6 +3,7 @@ project(CppPrimer)
 
 set(CMAKE_CXX_STANDARD 11)
 
+
 #-----------------------------------------------------------#
 #----------------------CppPrimer Start----------------------#
 #-----------------------------------------------------------#
@@ -14,13 +15,18 @@ set(SRC_CH01 ch01/main.cpp include/Sales_item.h ch01/1.20.cpp)
 #-----------------------------------------------------------#
 
 
-
-
 # 参考 https://cmake.org/cmake-tutorial/
 
 #-----------------------------------------------------------#
 #--------------------CMakeTutorial Start--------------------#
 #-----------------------------------------------------------#
+
+# 参见 https://stackoverflow.com/questions/39481958/setting-cmake-install-prefix-from-cmakelists-txt-file/39485990
+# Use this snippet *after* PROJECT(xxx):
+IF (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+    SET(CMAKE_INSTALL_PREFIX ${PROJECT_BINARY_DIR}/install
+            CACHE PATH "used to determine the root of where the files will be installed." FORCE)
+ENDIF (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 
 # should we use our own math functions?
 # If no initial value is provided, OFF is used.
@@ -36,14 +42,14 @@ if (USE_MYMATH)
     add_subdirectory(MathFunctions)
 
     # add include directory so that the MathFunctions/MathFunctions.h header file can be found for the function prototype
-#        下面两者均可
-#    include_directories("${PROJECT_SOURCE_DIR}/MathFunctions")
+    #        下面两者均可
+    #    include_directories("${PROJECT_SOURCE_DIR}/MathFunctions")
     list(APPEND EXTRA_INCLUDES "${PROJECT_SOURCE_DIR}/MathFunctions")
 
     # Note the use of a variable (EXTRA_LIBS in this case) to collect up any optional libraries to later be linked into the executable.
     # This is a common approach used to keep larger projects with many optional components clean.
-#    下面两者均可
-#    set(EXTRA_LIBS ${EXTRA_LIBS} MathFunctions)
+    #    下面两者均可
+    #    set(EXTRA_LIBS ${EXTRA_LIBS} MathFunctions)
     list(APPEND EXTRA_LIBS MathFunctions)
 
 
@@ -80,3 +86,8 @@ target_link_libraries(${PROJECT_NAME} ${EXTRA_LIBS})
 
 # 代替上方 include_directories()
 target_include_directories(${PROJECT_NAME} PUBLIC "${PROJECT_BINARY_DIR}" ${EXTRA_INCLUDES})
+
+# add the install targets
+install(TARGETS ${PROJECT_NAME} DESTINATION bin)
+install(FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h"
+        DESTINATION include)

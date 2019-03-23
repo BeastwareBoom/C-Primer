@@ -27,7 +27,6 @@ int main (int argc, char *argv[])
     double inputValue = atof(argv[1]);
 
 #ifdef USE_MYMATH
-    std::cout<<"USE_MYMATH"<<std::endl;
     double outputValue = mysqrt(inputValue);
 #else
     double outputValue = sqrt(inputValue);
