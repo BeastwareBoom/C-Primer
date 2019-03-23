@@ -29,15 +29,20 @@ option(USE_MYMATH
 
 if (USE_MYMATH)
 
-    # add include directory so that the MathFunctions/MathFunctions.h header file can be found for the function prototype
-    include_directories("${PROJECT_SOURCE_DIR}/MathFunctions")
-
     # add an add_subdirectory call in the top level CMakeLists.txt file so that the library will get built.
     add_subdirectory(MathFunctions)
 
+    # add include directory so that the MathFunctions/MathFunctions.h header file can be found for the function prototype
+#        下面两者均可
+#    include_directories("${PROJECT_SOURCE_DIR}/MathFunctions")
+    list(APPEND EXTRA_INCLUDES "${PROJECT_SOURCE_DIR}/MathFunctions")
+
     # Note the use of a variable (EXTRA_LIBS in this case) to collect up any optional libraries to later be linked into the executable.
     # This is a common approach used to keep larger projects with many optional components clean.
-    set(EXTRA_LIBS ${EXTRA_LIBS} MathFunctions)
+#    下面两者均可
+#    set(EXTRA_LIBS ${EXTRA_LIBS} MathFunctions)
+    list(APPEND EXTRA_LIBS MathFunctions)
+
 
 endif (USE_MYMATH)
 
@@ -57,8 +62,7 @@ configure_file(
 
 # add the binary tree to the search path for include files
 # so that we will find TutorialConfig.h
-include_directories("${PROJECT_BINARY_DIR}")
-
+#include_directories("${PROJECT_BINARY_DIR}")
 
 #-----------------------------------------------------------#
 #---------------------CMakeTutorial End---------------------#
@@ -70,3 +74,6 @@ add_executable(${PROJECT_NAME} ${CMAKE_TUTORIAL} ${SRC_CH01})
 
 
 target_link_libraries(${PROJECT_NAME} ${EXTRA_LIBS})
+
+# 代替上方 include_directories()
+target_include_directories(${PROJECT_NAME} PUBLIC "${PROJECT_BINARY_DIR}" ${EXTRA_INCLUDES})
