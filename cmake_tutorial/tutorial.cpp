@@ -6,6 +6,8 @@ int main (int argc, char *argv[])
 {
     if (argc < 2)
     {
+        //printf with a stream arg at first
+        //https://en.cppreference.com/w/cpp/io/c/fprintf
         fprintf(stdout,"Usage: %s number\n",argv[0]);
         return 1;
     }
