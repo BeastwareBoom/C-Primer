@@ -25,7 +25,7 @@ set(SRC_CH01 ch01/main.cpp include/Sales_item.h ch01/1.20.cpp)
 # should we use our own math functions?
 # If no initial value is provided, OFF is used.
 option(USE_MYMATH
-        "Use tutorial provided math implementation")
+        "Use tutorial provided math implementation" ON)
 
 if (USE_MYMATH)
 

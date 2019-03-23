@@ -6,7 +6,7 @@
 
 int main_const() {
     double di = 3.14;
-    const int &refi = di;
+//    const int &refi = di;
 
     const int a = 1;
     const int *aptr = &a;//aptr must be const
@@ -46,6 +46,7 @@ int main_in() {
 
     //Ctrl+D for output
     std::cout << "sum=" << sum << std::endl;
+    return EXIT_SUCCESS;
 }
 
 int main_stream() {

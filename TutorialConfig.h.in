@@ -4,4 +4,4 @@
 
 // In the source code we make use of USE_MYMATH as well. This is provided from CMake
 // to the source code through the TutorialConfig.h.in configured file by adding the following line to it:
-#cmakedefine USE_MYMATH @USE_MYMATH@
+#cmakedefine USE_MYMATH //@USE_MYMATH@
