@@ -27,6 +27,7 @@ set(SRC_CH01 ch01/main.cpp include/Sales_item.h ch01/1.20.cpp)
 # -DUSE_MYMATH=ON to change the value
 # Options are cached variables
 # USE cmake-gui | File | Delete Cache to rm cache
+# 参见 https://stackoverflow.com/questions/35744647/what-can-cause-a-cmake-option-not-work
 option(USE_MYMATH "Use tutorial provided math implementation" ON)
 
 if (USE_MYMATH)
