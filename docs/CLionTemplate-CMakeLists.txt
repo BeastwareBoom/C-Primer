@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 project(cpp_clion_template)
 
 # Build Boost: file:///D:/Workspace/CPP/OpenLibs/Boost/boost_1_69_0/more/getting_started/windows.html
+# Section5: 5.1 simplified default build or 5.2 custom build
 #set(BOOST_ROOT D:/Workspace/CPP/OpenLibs/Boost/boost_1_69_0)
 
 # VERSIONING
