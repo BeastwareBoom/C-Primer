@@ -1,4 +1,4 @@
-// A simple program that computes the square root of a number
+﻿// A simple program that computes the square root of a number
 
 //printf with a stream arg at first
 //https://en.cppreference.com/w/cpp/io/c/fprintf
