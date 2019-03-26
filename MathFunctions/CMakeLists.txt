@@ -2,6 +2,9 @@
 
 set(MATH_LIB MathFunctions)
 
+# https://cmake.org/cmake/help/v3.13/prop_tgt/ENABLE_EXPORTS.html#prop_tgt:ENABLE_EXPORTS
+#set(ENABLE_EXPORTS TRUE)
+
 # SHARED for dynamic lib;STATIC for static lib,default when not given
 add_library(${MATH_LIB} SHARED mysqrt.cxx)
 
