@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include "../include/Sales_item.h"
 
 int main_in_si() {
