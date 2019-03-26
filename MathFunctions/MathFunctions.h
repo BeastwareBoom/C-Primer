@@ -1,6 +1,6 @@
 
 //#ifdef WIN32
-
+//Typical pattern: <target-name>_EXPORTS
 #ifdef MathFunctions_EXPORTS
 #define EXPORT __declspec(dllexport)
 #else
