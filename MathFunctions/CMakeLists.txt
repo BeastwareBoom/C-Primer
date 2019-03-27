@@ -6,6 +6,7 @@ set(MAKE_TABLE MakeTable)
 # 1.create an executable
 add_executable(${MAKE_TABLE} MakeTable.cpp)
 # 2.add custom command
+# ref https://cmake.org/cmake/help/latest/command/add_custom_command.html
 add_custom_command(
 #        2.1 create output file Table.h
         OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/Table.h
@@ -16,12 +17,14 @@ add_custom_command(
 )
 
 # 3.  search path for include files
+# directory scope
+# https://stackoverflow.com/questions/31969547/what-is-the-difference-between-include-directories-and-target-include-directorie
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 # https://cmake.org/cmake/help/v3.13/prop_tgt/ENABLE_EXPORTS.html#prop_tgt:ENABLE_EXPORTS
 #set(ENABLE_EXPORTS TRUE)
 
-# 4. add to the main library
+# 4. add .h to the main library
 # SHARED for dynamic lib;STATIC for static lib,default when not given
 add_library(${MATH_LIB} SHARED mysqrt.cxx ${CMAKE_CURRENT_BINARY_DIR}/Table.h)
 
@@ -45,6 +48,7 @@ MESSAGE(STATUS "CMAKE_BUILD_TYPE:${CMAKE_BUILD_TYPE}")
 #    Endif ()
 #endif (MSVC_VERSION)
 
+# target scope
 # TutorialConfig.h file not found: the .h file in build dir
 target_include_directories(${MATH_LIB} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR} PRIVATE ${PROJECT_BINARY_DIR})
 
