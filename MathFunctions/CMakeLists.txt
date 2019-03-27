@@ -8,6 +8,9 @@ set(MATH_LIB MathFunctions)
 # SHARED for dynamic lib;STATIC for static lib,default when not given
 add_library(${MATH_LIB} SHARED mysqrt.cxx)
 
+#SET(CMAKE_BUILD_TYPE RELEASE)# Default|Debug|Release|RelWithDebInfo|MinSizeRel
+MESSAGE(STATUS "CMAKE_BUILD_TYPE:${CMAKE_BUILD_TYPE}")
+
 #if (MSVC_VERSION)
 #    IF (CMAKE_BUILD_TYPE MATCHES Release|Win32)
 #        set(COMPILE_OPTIONS "/GF /Od /W3 /Zi /Od /MDd /NOLOGO")
