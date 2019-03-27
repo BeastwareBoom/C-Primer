@@ -8,6 +8,23 @@ set(MATH_LIB MathFunctions)
 # SHARED for dynamic lib;STATIC for static lib,default when not given
 add_library(${MATH_LIB} SHARED mysqrt.cxx)
 
+#if (MSVC_VERSION)
+#    IF (CMAKE_BUILD_TYPE MATCHES Release|Win32)
+#        set(COMPILE_OPTIONS "/GF /Od /W3 /Zi /Od /MDd /NOLOGO")
+#        set(LINK_OPTIONS "/SUBSYSTEM:CONSOLE /MACHINE:X86 /MANIFEST /NOLOGO /DEBUG")
+#        set_target_properties(${MATH_LIB} PROPERTIES LINK_FLAGS ${LINK_OPTIONS} COMPILE_FLAGS ${COMPILE_OPTIONS})
+#        message(STATUS "COMPILE_OPTIONS:${COMPILE_OPTIONS}")
+#        message(STATUS "LINK_OPTIONS:${LINK_OPTIONS}")
+#    elseIF (CMAKE_BUILD_TYPE MATCHES Debug|Win32)
+#        set(COMPILE_OPTIONS "/GF /Od /W3 /Zi /Od /MDd")
+#        set(LINK_OPTIONS "/SUBSYSTEM:CONSOLE /INCREMENTAL:NO /MACHINE:X86 /MANIFEST /NOLOGO /DEBUG")
+#        set_target_properties(${MATH_LIB} PROPERTIES LINK_FLAGS ${LINK_OPTIONS} COMPILE_FLAGS ${COMPILE_OPTIONS})
+#        message(STATUS "COMPILE_OPTIONS:${COMPILE_OPTIONS}")
+#        message(STATUS "LINK_OPTIONS:${LINK_OPTIONS}")
+#
+#    Endif ()
+#endif (MSVC_VERSION)
+
 # TutorialConfig.h file not found: the .h file in build dir
 target_include_directories(${MATH_LIB} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR} PRIVATE ${PROJECT_BINARY_DIR})
 
