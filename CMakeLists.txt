@@ -5,6 +5,8 @@ set(CMAKE_CXX_STANDARD 11)
 
 # add compile options?
 # https://stackoverflow.com/questions/11783932/how-do-i-add-a-linker-or-compile-flag-in-a-cmake-file
+# https://cmake.org/cmake/help/latest/command/target_compile_options.html
+#target_compile_options
 #set(CMAKE_CXX_FLAGS "-fexceptions")
 
 #-----------------------------------------------------------#
@@ -30,6 +32,8 @@ IF (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     SET(CMAKE_INSTALL_PREFIX ${PROJECT_BINARY_DIR}/install
             CACHE PATH "used to determine the root of where the files will be installed." FORCE)
 ENDIF (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+# how to use?
+#set(DESTDIR "D:/")
 
 # should we use our own math functions?
 # If no initial value is provided, OFF is used.
@@ -97,6 +101,7 @@ target_link_libraries(${PROJECT_NAME} ${EXTRA_LIBS})
 target_include_directories(${PROJECT_NAME} PUBLIC "${PROJECT_BINARY_DIR}" ${EXTRA_INCLUDES})
 
 # add the install targets. Run | Install or make install on linux
+message(${CMAKE_INSTALL_PREFIX})
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 install(FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h" DESTINATION include)
 
