@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.12)
 project(CppPrimer)
 
 set(CMAKE_CXX_STANDARD 11)
-
+# compile and link message in details
+set(CMAKE_VERBOSE_MAKEFILE TRUE)
 # add compile options?
 # https://stackoverflow.com/questions/11783932/how-do-i-add-a-linker-or-compile-flag-in-a-cmake-file
 # https://cmake.org/cmake/help/latest/command/target_compile_options.html
@@ -32,7 +33,8 @@ IF (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     SET(CMAKE_INSTALL_PREFIX ${PROJECT_BINARY_DIR}/install
             CACHE PATH "used to determine the root of where the files will be installed." FORCE)
 ENDIF (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-# how to use?
+# may not work on windows
+# https://cmake.org/cmake/help/v3.12/envvar/DESTDIR.html
 #set(DESTDIR "D:/")
 
 # should we use our own math functions?
