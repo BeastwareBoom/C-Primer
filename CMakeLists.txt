@@ -4,11 +4,12 @@ project(CppPrimer)
 set(CMAKE_CXX_STANDARD 11)
 # compile and link message in details
 set(CMAKE_VERBOSE_MAKEFILE TRUE)
-# add compile options?
+
+# add compile options
 # https://stackoverflow.com/questions/11783932/how-do-i-add-a-linker-or-compile-flag-in-a-cmake-file
 # https://cmake.org/cmake/help/latest/command/target_compile_options.html
-#target_compile_options
-#set(CMAKE_CXX_FLAGS "-fexceptions")
+# https://cmake.org/pipermail/cmake/2006-February/008370.html
+#set(CMAKE_CXX_FLAGS_<type> "-fexceptions")
 
 #-----------------------------------------------------------#
 #----------------------CppPrimer Start----------------------#
