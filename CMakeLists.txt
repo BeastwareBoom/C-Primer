@@ -74,6 +74,7 @@ set(CMAKE_TUTORIAL cmake_tutorial/tutorial.cpp)
 # The version number.
 set(Tutorial_VERSION_MAJOR 1)
 set(Tutorial_VERSION_MINOR 0)
+set(Tutorial_VERSION_PATCH 0)
 
 # does this system provide the log and exp functions?
 include(CheckSymbolExists)
@@ -133,4 +134,9 @@ set (CPACK_RESOURCE_FILE_LICENSE
         "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
 set (CPACK_PACKAGE_VERSION_MAJOR "${Tutorial_VERSION_MAJOR}")
 set (CPACK_PACKAGE_VERSION_MINOR "${Tutorial_VERSION_MINOR}")
+set (CPACK_PACKAGE_VERSION_PATCH "${Tutorial_VERSION_PATCH}")
+
+# NSIS not installed problem
+# https://stackoverflow.com/questions/29754510/generating-an-installer-using-cmake-cpack-wix
+set(CPACK_GENERATOR WIX)
 include (CPack)
