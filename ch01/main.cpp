@@ -3,6 +3,11 @@
 
 //using namespace std;
 
+/* auto generated MAIN by live template */
+int main_aux_source_directory(int argc, char *argv[]) {
+    std::cout<<"aux_source_directory command"<<std::endl;
+    return EXIT_SUCCESS;
+}
 
 int main_const() {
     double di = 3.14;

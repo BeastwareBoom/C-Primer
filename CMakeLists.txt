@@ -15,7 +15,10 @@ set(CMAKE_VERBOSE_MAKEFILE TRUE)
 #----------------------CppPrimer Start----------------------#
 #-----------------------------------------------------------#
 
-set(SRC_CH01 ch01/main.cpp include/Sales_item.h ch01/1.20.cpp)
+#set(SRC_CH01 ch01/main.cpp include/Sales_item.h ch01/1.20.cpp)
+# scans all files in the <dir> and stores in <var>
+# Note: If CMakeList.txt is not modified after adding a new file,one needs to manually re-run CMake to refresh.
+aux_source_directory(ch01 SRC_CH01)
 
 #-----------------------------------------------------------#
 #-----------------------CppPrimer End-----------------------#
