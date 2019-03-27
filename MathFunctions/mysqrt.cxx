@@ -2,6 +2,7 @@
 #include <math.h>
 #include "MathFunctions.h"
 #include "TutorialConfig.h"
+#include "Table.h"
 
 // a hack square root calculation using simple operations
 double mysqrt(double x)
