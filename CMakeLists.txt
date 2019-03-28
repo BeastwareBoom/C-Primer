@@ -138,5 +138,6 @@ set (CPACK_PACKAGE_VERSION_PATCH "${Tutorial_VERSION_PATCH}")
 
 # NSIS not installed problem
 # https://stackoverflow.com/questions/29754510/generating-an-installer-using-cmake-cpack-wix
-set(CPACK_GENERATOR WIX)
+# ZIP打普通压缩包 或者 WIX构建.msi(Microsoft Installer)包
+set(CPACK_GENERATOR ZIP WIX)# 同时打包.zip和.msi
 include (CPack)
