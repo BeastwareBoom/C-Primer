@@ -13,7 +13,13 @@
 #include "MathFunctions.h"
 #endif
 
-int main (int argc, char *argv[])
+int main_test (int argc, char *argv[]){
+    std::cout<<"main test"<<std::endl;
+    return 0;
+}
+
+
+int main/*_tutorial*/ (int argc, char *argv[])
 {
     if (argc < 2)
     {

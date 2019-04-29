@@ -47,7 +47,7 @@ ENDIF (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 # Options are cached variables
 # USE cmake-gui | File | Delete Cache to rm cache
 # 参见 https://stackoverflow.com/questions/35744647/what-can-cause-a-cmake-option-not-work
-option(USE_MYMATH "Use tutorial provided math implementation" ON)
+option(USE_MYMATH "Use tutorial provided math implementation" OFF)# ON
 
 if (USE_MYMATH)
 
