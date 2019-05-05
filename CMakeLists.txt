@@ -149,3 +149,17 @@ set(CPACK_PACKAGE_VERSION_PATCH "${Tutorial_VERSION_PATCH}")
 # ZIP打普通压缩包 或者 WIX构建.msi(Microsoft Installer)包
 set(CPACK_GENERATOR ZIP WIX)# 同时打包.zip和.msi
 include(CPack)
+
+# 定义函数，扫描指定路径并拷贝到binary所在路径
+function(ITERATE_COPY dir)
+    file(GLOB files ${dir})
+    foreach (file ${files})
+        MESSAGE(STATUS "ITERATE_COPY: copying ${file}")
+        add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                ${file} $<TARGET_FILE_DIR:${PROJECT_NAME}>)
+    endforeach ()
+endfunction(ITERATE_COPY)
+
+# matching all files under docs dir
+ITERATE_COPY(docs/*)
