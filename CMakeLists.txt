@@ -47,7 +47,7 @@ ENDIF (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 # Options are cached variables
 # USE cmake-gui | File | Delete Cache to rm cache
 # 参见 https://stackoverflow.com/questions/35744647/what-can-cause-a-cmake-option-not-work
-option(USE_MYMATH "Use tutorial provided math implementation" OFF)# ON
+option(USE_MYMATH "Use tutorial provided math implementation" ON)# ON
 
 if (USE_MYMATH)
 
@@ -64,7 +64,6 @@ if (USE_MYMATH)
     #    下面两者均可
     #    set(EXTRA_LIBS ${EXTRA_LIBS} MathFunctions)
     list(APPEND EXTRA_LIBS MathFunctions)
-
 
 endif (USE_MYMATH)
 
@@ -107,6 +106,13 @@ target_link_libraries(${PROJECT_NAME} ${EXTRA_LIBS})
 # 代替上方 include_directories()
 target_include_directories(${PROJECT_NAME} PUBLIC "${PROJECT_BINARY_DIR}" ${EXTRA_INCLUDES})
 
+if (USE_MYMATH)
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different # or using copy_directory followed with a dir
+            ${PROJECT_BINARY_DIR}/MathFunctions/MathFunctions.dll
+            $<TARGET_FILE_DIR:${PROJECT_NAME}>)# or using ${PROJECT_BINARY_DIR}
+endif ()
+
 # add the install targets. Run | Install or make install on linux
 message(${CMAKE_INSTALL_PREFIX})
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
@@ -117,27 +123,27 @@ install(FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h" DESTINATION include)
 #enable_testing()
 
 #define a macro to simplify adding tests, then use it
-macro (do_test arg result)
-    add_test (TutorialComp${arg} ${PROJECT_NAME} ${arg})
-    set_tests_properties (TutorialComp${arg}
+macro(do_test arg result)
+    add_test(TutorialComp${arg} ${PROJECT_NAME} ${arg})
+    set_tests_properties(TutorialComp${arg}
             PROPERTIES PASS_REGULAR_EXPRESSION ${result})
-endmacro (do_test)
+endmacro(do_test)
 
 # do a bunch of result based tests
-do_test (25 "25 is 5")
-do_test (-25 "-25 is 0")
+do_test(25 "25 is 5")
+do_test(-25 "-25 is 0")
 
 
 # build a CPack driven installer package
-include (InstallRequiredSystemLibraries)
-set (CPACK_RESOURCE_FILE_LICENSE
+include(InstallRequiredSystemLibraries)
+set(CPACK_RESOURCE_FILE_LICENSE
         "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
-set (CPACK_PACKAGE_VERSION_MAJOR "${Tutorial_VERSION_MAJOR}")
-set (CPACK_PACKAGE_VERSION_MINOR "${Tutorial_VERSION_MINOR}")
-set (CPACK_PACKAGE_VERSION_PATCH "${Tutorial_VERSION_PATCH}")
+set(CPACK_PACKAGE_VERSION_MAJOR "${Tutorial_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${Tutorial_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${Tutorial_VERSION_PATCH}")
 
 # NSIS not installed problem
 # https://stackoverflow.com/questions/29754510/generating-an-installer-using-cmake-cpack-wix
 # ZIP打普通压缩包 或者 WIX构建.msi(Microsoft Installer)包
 set(CPACK_GENERATOR ZIP WIX)# 同时打包.zip和.msi
-include (CPack)
+include(CPack)
