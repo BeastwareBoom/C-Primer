@@ -162,4 +162,8 @@ function(ITERATE_COPY dir)
 endfunction(ITERATE_COPY)
 
 # matching all files under docs dir
-ITERATE_COPY(docs/*)
+#ITERATE_COPY(docs/*)
+
+# Where are the additional libraries installed? Note: provide includes
+# path here, subsequent checks will resolve everything else
+#set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/foo_module/" )
