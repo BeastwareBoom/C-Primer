@@ -52,6 +52,8 @@ option(USE_MYMATH "Use tutorial provided math implementation" ON)# ON
 if (USE_MYMATH)
 
     # add an add_subdirectory call in the top level CMakeLists.txt file so that the library will get built.
+    # This command tells CMake to look in said folder for another CMakeLists.txt file and execute that script,
+    # so every subdirectory added this way must have a CMakeLists.txt file within.
     add_subdirectory(MathFunctions)
 
     # add include directory so that the MathFunctions/MathFunctions.h header file can be found for the function prototype
