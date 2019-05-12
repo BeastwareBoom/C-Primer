@@ -3,6 +3,32 @@
 
 //using namespace std;
 
+struct X
+{
+    virtual void foo()/*=0*/;
+};
+struct Y : X
+{
+    void foo() {}
+};
+struct A
+{
+    virtual ~A() = 0;
+};
+struct B: A
+{
+    virtual ~B(){}
+};
+extern int x;
+void foo();
+int main()
+{
+    x = 0;//外部变量，去掉extern可解决
+//    foo();//只声明，未定义，定义可解决
+//    Y y;//X中foo声明为纯虚方法可解决
+//    B b;//A中析构函数，空实现可解决
+}
+
 /* auto generated MAIN by live template */
 int main_aux_source_directory(int argc, char *argv[]) {
     std::cout<<"aux_source_directory command"<<std::endl;

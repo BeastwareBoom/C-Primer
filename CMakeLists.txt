@@ -99,8 +99,8 @@ configure_file(
 #-----------------------------------------------------------#
 
 
-#WIN32
-add_executable(${PROJECT_NAME} ${CMAKE_TUTORIAL} ${SRC_CH01})
+#WIN32 ${CMAKE_TUTORIAL}
+add_executable(${PROJECT_NAME}  ${SRC_CH01})
 
 
 target_link_libraries(${PROJECT_NAME} ${EXTRA_LIBS})
