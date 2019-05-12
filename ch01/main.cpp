@@ -19,11 +19,12 @@ struct B: A
 {
     virtual ~B(){}
 };
+//decleration only,see https://www.tutorialspoint.com/What-is-the-difference-between-a-definition-and-a-declaration-in-Cplusplus
 extern int x;
 void foo();
 int main()
 {
-    x = 0;//外部变量，去掉extern可解决
+    x = 0;//变量声明，去掉extern可解决
 //    foo();//只声明，未定义，定义可解决
 //    Y y;//X中foo声明为纯虚方法可解决
 //    B b;//A中析构函数，空实现可解决
