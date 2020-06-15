@@ -100,7 +100,10 @@ configure_file(
 
 
 #WIN32 ${CMAKE_TUTORIAL}
-add_executable(${PROJECT_NAME}  ${SRC_CH01})
+
+SET(Cpp_Tour_Srcs tour_cpp/main.cpp)
+
+add_executable(${PROJECT_NAME}  ${Cpp_Tour_Srcs} )#${SRC_CH01}
 
 
 target_link_libraries(${PROJECT_NAME} ${EXTRA_LIBS})
