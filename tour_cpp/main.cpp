@@ -43,11 +43,29 @@ class Vector_s :public Vector {
 };
 
 //4.5 Class Hierarchies
-int main() {
+int main_cls() {
 	Vector vec = { 1,3,4,5 };
 
+	//like "is instance of" or "is kind of"
 	//convert to specific type from given type, nullptr if failed
 	//Vector_s * vs = dynamic_cast<Vector_s*>(vp);//polymorphical
 	//Vector_s & vs = dynamic_cast<Vector_s&>(vp);//std::bad_cast exception if failed
+	return 0;
+}
+
+class LifeCycle {
+public:
+	LifeCycle() { cout << "begins" << endl; }
+	~LifeCycle() { cout << "ends" << endl; }
+};
+
+//std::unique_ptr<>()
+//also @see https://en.cppreference.com/w/cpp/memory/unique_ptr
+int main() {
+
+	{
+		std::unique_ptr<LifeCycle> ptr(new LifeCycle);
+	}
+
 	return 0;
 }
